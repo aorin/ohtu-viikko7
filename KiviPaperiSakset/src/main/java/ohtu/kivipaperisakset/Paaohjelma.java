@@ -16,8 +16,8 @@ public class Paaohjelma {
                     + "\nmuilla valinnoilla lopetataan");
 
             String vastaus = scanner.nextLine();
-            KPSPeli peli = KPSPelitehdas.annaKPSPeli(vastaus);
-            
+            KPSPeli peli = peliVastauksenPerusteella(vastaus);
+
             if (peli != null) {
                 System.out.println("peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s");
                 peli.pelaa();
@@ -26,5 +26,17 @@ public class Paaohjelma {
             }
         }
 
+    }
+
+    public static KPSPeli peliVastauksenPerusteella(String vastaus) {
+        if (vastaus.endsWith("a")) {
+            return KPSPeli.pelaajaVsPelaaja();
+        } else if (vastaus.endsWith("b")) {
+            return KPSPeli.pelaajaVsTekoaly();
+        } else if (vastaus.endsWith("c")) {
+            return KPSPeli.pelaajaVsParannettuTekoaly();
+        } else {
+            return null;
+        }
     }
 }

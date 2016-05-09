@@ -1,6 +1,17 @@
 package ohtu.kivipaperisakset;
 
 public abstract class KPSPeli {
+    public static KPSPeli pelaajaVsPelaaja() {
+        return new KPSPelaajaVsPelaaja();
+    }
+    
+    public static KPSPeli pelaajaVsTekoaly() {
+        return new KPSTekoaly(new Tekoaly());
+    }
+    
+    public static KPSPeli pelaajaVsParannettuTekoaly() {
+        return new KPSTekoaly(new TekoalyParannettu(20));
+    }
     
     public void pelaa() {
         Tuomari tuomari = new Tuomari();
